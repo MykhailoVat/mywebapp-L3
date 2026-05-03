@@ -9,7 +9,7 @@
   "scripts": {
     "dev-start": "NODE_ENV=development node src/server/server.js",
     "test": "jest --coverage",
-    "db-migrate": "./init_db/migrate.sh"
+    "db-init": ""
   },
   "dependencies": {
     "dotenv": "^17.3.1",

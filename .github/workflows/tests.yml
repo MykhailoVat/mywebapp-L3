@@ -47,7 +47,8 @@ jobs:
           done
           exit 1
 
-      - run: npm run db-migrate
+      - run: |
+          PGPASSWORD=test psql -h localhost -U test -d testdb -f ./init_db/init.sql
 
       - run: npm test
 
