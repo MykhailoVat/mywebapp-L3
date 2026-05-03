@@ -51,26 +51,7 @@ npm install
 bash /init_db/init.sh
 ```
 
-### 4. Налаштування конфігурації
-
-Створіть два файли в кореневій директорії проекту:
-
-**`.env_app`** — налаштування застосунку:
-```env
-APP_PORT=<port>
-APP_HOST=<host>
-```
-
-**`.env_db`** — налаштування бази даних:
-```env
-DB_HOST=<host>
-DB_PORT=<port>
-DB_USER=<user>
-DB_PASSWORD=<password>
-DB_NAME=<name>
-```
-
-### 5. Запуск
+### 4. Запуск
 
 ```bash
 npm run dev-start

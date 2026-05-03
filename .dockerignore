@@ -1,7 +1,7 @@
 node_modules
 Readme.md
-.env_app
-.env_db
+.env.app.t
+.env.db.t
 Dockerfile
 docker-compose.yaml
 scripts

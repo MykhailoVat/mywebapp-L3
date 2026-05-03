@@ -1,0 +1,64 @@
+---
+name: Integration Tests
+
+on:
+  push:
+    branches: [main, tests]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      DATABASE_URL: postgres://test:test@localhost:5432/testdb
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm install
+
+      - name: Wait for DB
+        run: |
+          for i in {1..10}; do
+            nc -z localhost 5432 && echo "DB is up" && exit 0
+            echo "Waiting for DB..."
+            sleep 2
+          done
+          exit 1
+
+      - run: |
+          PGPASSWORD=test \
+          psql \
+          -h localhost \
+          -U test \
+          -d testdb \
+          -f ./init_db/init.sql
+
+      - run: npm test
+
+      - name: Upload coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: auto_tests/coverage

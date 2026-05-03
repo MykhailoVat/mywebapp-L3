@@ -8,12 +8,14 @@
   "main": "src/server/server.js",
   "scripts": {
     "dev-start": "NODE_ENV=development node src/server/server.js",
-    "test:int": "jest --coverage"
+    "test": "NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "db-init": ""
   },
   "dependencies": {
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
-    "pg": "^8.20.0"
+    "pg": "^8.20.0",
+    "supertest": "^7.2.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
