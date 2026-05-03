@@ -1,2 +1,2 @@
-APP_PORT=<port>
-APP_HOST=<host>
+APP_PORT=3000
+APP_HOST=localhost
