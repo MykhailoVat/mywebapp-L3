@@ -48,7 +48,12 @@ jobs:
           exit 1
 
       - run: |
-          PGPASSWORD=test psql -h localhost -U test -d testdb -f ./init_db/init.sql
+          PGPASSWORD=test \
+          psql \
+         -h localhost \
+         -U test \
+         -d testdb \
+         -f ./init_db/init.sql
 
       - run: npm test
 
