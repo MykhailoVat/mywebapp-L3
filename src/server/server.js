@@ -20,7 +20,7 @@ if (process.env.LISTEN_FDS) {
         const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
         dotenv.config({
-            path: path.resolve(__dirname, '../../.env_app')
+            path: path.resolve(__dirname, '../../.env_app_t')
         })
 
         port = parseInt(process.env.APP_PORT);
