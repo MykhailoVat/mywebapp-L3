@@ -3,7 +3,7 @@ name: Integration Tests
 
 on:
   push:
-    branches: [tests, work]
+    branches: [main]
     tags: ['*']
   pull_request:
     branches: [main]
