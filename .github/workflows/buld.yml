@@ -38,7 +38,7 @@ jobs:
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=sha,format=long
             type=ref,event=tag
-            type=raw,value=stable, \
+            type=raw,value=stable,
             enable=${{ startsWith(github.ref, 'refs/tags/') }}
 
       - name: Build and push
