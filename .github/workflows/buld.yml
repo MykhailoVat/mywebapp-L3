@@ -38,7 +38,7 @@ jobs:
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=sha,format=long
             type=ref,event=tag
-          # yamllint disable-line rule:line-length
+            # yamllint disable-line rule:line-length
             type=raw,value=stable,enable=${{ startsWith(github.ref, 'refs/tags/') }}
 
       - name: Build and push
