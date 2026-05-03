@@ -7,7 +7,7 @@ export default {
   detectOpenHandles: true,
   verbose: true,
   testPathIgnorePatterns: ["/node_modules/"],
-  coverageDirectory: "tests/coverage",
+  coverageDirectory: "auto_tests/coverage",
   coverageThreshold: {
     global: {
       branches: 40,

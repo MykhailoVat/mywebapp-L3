@@ -2,12 +2,10 @@ import request from "supertest";
 import app from "../../src/server/app.js";
 import pool from "../../src/repositories/pool.js";
 
-// 🔥 очищаємо БД перед кожним тестом
 beforeEach(async () => {
     await pool.query('TRUNCATE TABLE tasks RESTART IDENTITY CASCADE');
 });
 
-// 🔥 закриваємо конекшн після всіх тестів
 afterAll(async () => {
     await pool.end();
 });
@@ -48,6 +46,7 @@ describe("Tasks API", () => {
             .set("Accept", "application/json")
             .send({ title: "test task" });
 
+        expect(res.body.id).toBe(1);
         expect(res.status).toBe(201);
         expect(res.body.title).toBe("test task");
         expect(res.body.status).toBe("NEW");
@@ -70,6 +69,7 @@ describe("Tasks API", () => {
     test("POST /tasks/:id/done -> mark task as done", async () => {
         const createRes = await request(app)
             .post("/tasks")
+            .set("Accept", "application/json")
             .send({ title: "task1" });
 
         const id = createRes.body.id;
