@@ -1,5 +1,3 @@
 .idea
-.env_db_t
-.env_app_t
 node_modules
 coverage

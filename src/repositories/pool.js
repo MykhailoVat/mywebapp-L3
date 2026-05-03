@@ -13,7 +13,7 @@ let name
 if (process.env.NODE_ENV === 'development') {
     const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-    const envpath = path.resolve(__dirname, '../../.env_db_t')
+    const envpath = path.resolve(__dirname, '../../.env.db.t')
 
     if (!envpath) {
         throw new Error(`envpath is not defined. Make sure you have .env files created (read docu)`)
