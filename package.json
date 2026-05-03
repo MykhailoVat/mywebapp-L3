@@ -8,7 +8,7 @@
   "main": "src/server/server.js",
   "scripts": {
     "dev-start": "NODE_ENV=development node src/server/server.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "test": "NODE_ENV=development node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
     "db-init": ""
   },
   "dependencies": {
