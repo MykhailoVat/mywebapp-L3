@@ -12,7 +12,7 @@ services:
       - app_net
 
   app:
-    build: .
+    build: ghcr.io/MykhailoVat/mywebapp:latest
     depends_on:
       - db
     volumes:
