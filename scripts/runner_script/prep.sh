@@ -29,6 +29,7 @@ systemctl enable docker
 systemctl start docker
 
 usermod -aG docker "$USER"
+newgrp docker
 
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
