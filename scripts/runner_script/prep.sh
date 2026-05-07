@@ -33,7 +33,10 @@ usermod -aG docker "$USER"
 newgrp docker
 
 # py tools
-apt install -y python3 python3-pip
+apt install -y yamllint
+
+# psql
+apt install -y postgresql
 
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
