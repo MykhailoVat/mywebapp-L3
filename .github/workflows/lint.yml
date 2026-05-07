@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Yamllint
         run: |
-          pip install yamllint
+          python3 -m pip install yamllint
           yamllint .
 
       - name: Install node

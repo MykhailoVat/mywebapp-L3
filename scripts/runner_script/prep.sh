@@ -6,6 +6,7 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
+#docker
 # Add Docker's official GPG key:
 apt update
 apt install -y ca-certificates curl
@@ -30,6 +31,9 @@ systemctl start docker
 
 usermod -aG docker "$USER"
 newgrp docker
+
+# py tools
+apt install -y python3 python3-pip
 
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
