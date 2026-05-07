@@ -9,7 +9,7 @@ name: Lint
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v4
@@ -24,7 +24,6 @@ jobs:
 
       - name: Run Yamllint
         run: |
-          pip install yamllint
           yamllint .
 
       - name: Install node

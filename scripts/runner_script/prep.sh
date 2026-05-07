@@ -6,6 +6,7 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
+#docker
 # Add Docker's official GPG key:
 apt update
 apt install -y ca-certificates curl
@@ -22,6 +23,20 @@ Components: stable
 Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
+
+apt install -y docker.io
+
+systemctl enable docker
+systemctl start docker
+
+usermod -aG docker "$USER"
+newgrp docker
+
+# py tools
+apt install -y yamllint
+
+# psql
+apt install -y postgresql
 
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
