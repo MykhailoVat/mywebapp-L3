@@ -23,6 +23,9 @@ Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
 
+systemctl enable docker
+systemctl start docker
+
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
 sudo -u "$SUDO_USER" mkdir "$HOME_DIR"/actions-runner && cd "$HOME_DIR"/actions-runner
