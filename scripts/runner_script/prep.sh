@@ -28,6 +28,8 @@ apt install -y docker.io
 systemctl enable docker
 systemctl start docker
 
+usermod -aG docker "$USER"
+
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
 sudo -u "$SUDO_USER" mkdir "$HOME_DIR"/actions-runner && cd "$HOME_DIR"/actions-runner
