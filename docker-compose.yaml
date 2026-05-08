@@ -21,7 +21,7 @@ services:
       test: ["CMD", "wget", "-q", "-O", "-", "http://0.0.0.0:3000/health/alive"]
       interval: 5s
       timeout: 2s
-      retries: 10
+      retries: 20
     networks:
       - app_net
 
