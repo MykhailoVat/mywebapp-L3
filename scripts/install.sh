@@ -18,7 +18,7 @@ Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
 
-
+apt update
 apt upgrade -y
 apt install -y nginx nodejs npm postgresql docker.io
 apt-get install -y docker-compose-plugin
