@@ -16,7 +16,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./docker_configs/config.json:/etc/mywebapp/config.json
+      - ./docker_conf/config.json:/etc/mywebapp/config.json
     healthcheck:
       test: ["CMD", "wget", "-q", "-O", "-", "http://0.0.0.0:3000/health/alive"]
       interval: 5s
@@ -30,7 +30,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./docker_configs/mywebapp.conf:/etc/nginx/conf.d/default.conf
+      - ./docker_conf/mywebapp.conf:/etc/nginx/conf.d/default.conf
     depends_on:
       app:
         condition: service_healthy
