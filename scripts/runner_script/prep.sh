@@ -38,6 +38,9 @@ apt install -y yamllint
 # psql
 apt install -y postgresql
 
+systemctl stop postgresql
+systemctl disable postgresql
+
 HOME_DIR=$(eval echo "~$SUDO_USER")
 # Create a folder
 sudo -u "$SUDO_USER" mkdir "$HOME_DIR"/actions-runner && cd "$HOME_DIR"/actions-runner
