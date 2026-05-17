@@ -4,7 +4,7 @@ name: Build & Push Docker Image
 on:
   push:
     branches: [main]
-    tags: ['*']
+    tags: ['v*']
 
 permissions:
   contents: read
@@ -39,7 +39,7 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           tags: |
             type=raw,value=latest,enable=${{ env.IS_MAIN }}
-            type=sha,format=long
+            type=sha,prefix=sha-,format=long
             type=ref,event=tag
             type=raw,value=stable,enable=${{ env.IS_TAG }}
 
