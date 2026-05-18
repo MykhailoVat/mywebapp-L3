@@ -9,6 +9,7 @@ cp ../docker_conf/mywebapp.service /etc/systemd/system/
 systemctl daemon-reload
 #systemctl start mywebapp.socket
 #systemctl enable mywebapp.socket
+systemctl stop nginx
 systemctl start mywebapp.service
 systemctl enable mywebapp.service
 
