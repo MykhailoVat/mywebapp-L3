@@ -12,7 +12,7 @@ services:
       - app_net
 
   app:
-    image: ghcr.io/mykhailovat/mywebapp-l3:latest
+    image: ghcr.io/mykhailovat/mywebapp-l3:${APP_TAG:-latest}
     depends_on:
       - db
     volumes:
