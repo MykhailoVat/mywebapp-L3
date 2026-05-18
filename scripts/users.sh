@@ -22,9 +22,10 @@ echo "student:$STUDENT_PASS" | sudo chpasswd
 chage -d 0 operator
 chage -d 0 teacher
 
-SUDO_FILE="/etc/sudoers.d/operator"
+SUDO_FILE_OPERATOR="/etc/sudoers.d/operator"
+SUDO_FILE_STUDENT="/etc/sudoers.d/student"
 
-bash -c "cat > $SUDO_FILE" <<EOF
+bash -c "cat > $SUDO_FILE_OPERATOR" <<EOF
 operator ALL=(ALL) NOPASSWD: /bin/systemctl start mywebapp
 operator ALL=(ALL) NOPASSWD: /bin/systemctl stop mywebapp
 operator ALL=(ALL) NOPASSWD: /bin/systemctl status mywebapp
@@ -32,12 +33,16 @@ operator ALL=(ALL) NOPASSWD: /bin/systemctl restart mywebapp
 operator ALL=(ALL) NOPASSWD: /bin/systemctl reload nginx
 operator ALL=(ALL) NOPASSWD: /bin/systemctl stop nginx
 operator ALL=(ALL) NOPASSWD: /bin/systemctl start nginx
+EOF
 
+bash -c "cat > $SUDO_FILE_STUDENT" <<EOF
 student ALL=(ALL) NOPASSWD: /bin/systemctl restart mywebapp
 student ALL=(ALL) NOPASSWD: /opt/mywebapp/scripts/system/upd_env.sh
 EOF
 
-chmod 440 $SUDO_FILE
+
+chmod 440 $SUDO_FILE_OPERATOR
+chmod 440 $SUDO_FILE_STUDENT
 
 chown -R app:app "/opt/mywebapp"
 chmod -R 755 "/opt/mywebapp"
