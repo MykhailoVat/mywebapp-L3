@@ -21,6 +21,7 @@ EOF
 apt update
 apt upgrade -y
 apt install -y nginx nodejs npm postgresql docker.io
+apt-get update
 apt-get install -y docker-compose-plugin
 
 systemctl enable docker
