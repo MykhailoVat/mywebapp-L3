@@ -1,5 +1,5 @@
 ---
-name: Build & Push Docker Image
+name: Build & Deploy
 
 on:
   push:
@@ -52,3 +52,20 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Make deploy script executable
+        run: chmod +x ./scripts/deploy.sh
+
+      - name: Run deploy
+        run: |
+          ./scripts/deploy.sh "${{ github.ref_name }}"

@@ -49,4 +49,7 @@ sudo -u "$SUDO_USER" curl -o actions-runner-linux-x64-2.334.0.tar.gz -L https://
 # Extract the installer
 sudo -u "$SUDO_USER" tar xzf ./actions-runner-linux-x64-2.334.0.tar.gz
 
+mkdir ~/scripts
+cp /opt/mywebapp/scripts/runner/deploy.sh ~/scripts
+
 echo "RUNNER-VM PREPARED, NEXT STEP: CONFIGURE RUNNER (MANUALLY)"
