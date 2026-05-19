@@ -62,4 +62,4 @@ jobs:
     steps:
       - name: Run deploy
         run: |
-          ./scripts/deploy.sh "${{ github.ref_name }}"
+          ~/scripts/deploy.sh "${{ github.ref_name }}"
